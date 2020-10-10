@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
     require("connection.php");
     //require("session.php");
     //$base=$PDO;
@@ -18,14 +18,15 @@ session_start();
         }
         
     }
-    function upDateUser($user){
+    function updateUser($user){
         $base=dbConnect();
         try{
-            $query="UPDATE users set name=?,email=?) values (?,?)";
+            $query="UPDATE users set name=?,email=?";
             //$date=date("Y-m-d H:i:s");
 
             $query=$base->prepare($query);
             $query->execute(array($user->getPseudo(),$user->getEmail()));
+            //echo "breaker";
             return 1;
         } catch(Exception $e){
             echo "erreur :: ".$e->getMessage();
@@ -43,19 +44,36 @@ session_start();
         }
 
     }
+    function showOneUser($id){
+        $base=dbConnect();
+        try{
+            //$query=$base->query("SELECT * FROM users WHERE indexUser=?");
+            $query=$base->prepare("SELECT * FROM users WHERE indexUser=?");
+            $query->execute(array($id));
+            $data=$query->fetch();
+            return $data;
+        } catch(Exception $e) {
+            echo "erreur :: ".$e->getMessage();
+        }
 
-    function delleteUser($idUser){
+    }
+
+    function deleteUser($idUser){
 
     }
     function signIn($login,$password){
         $list=showAllUser();
+        var_dump($list);
         foreach($list as $row){
+            
             if($row["password"]==$password && $row["email"]==$login){
-                $_SESSION["id"]=$row["idUser"];
-                $_SESSION["userName"]=$row["pseudo"];
+               $_SESSION["id"]=$row["indexUser"];
+                $_SESSION["userName"]=$row["name"];
                 return 1;
             }
         }
         return 0;
     }
+    //signIn(1,1);
+   // var_dump(showOneUser(1));
 ?>

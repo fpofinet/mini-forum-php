@@ -16,5 +16,6 @@ require("../controller/userController.php");
 var_dump(showAllUser());
 ?>
 </button>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut unde, minima ipsam maiores aliquid nam, tempora, autem corrupti saepe amet obcaecati sed ad. Nisi illo quibusdam placeat earum inventore nihil!
 </body>
 </html>

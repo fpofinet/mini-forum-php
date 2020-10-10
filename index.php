@@ -15,9 +15,9 @@
        <img src="imgs/banner1.jpg" width="1375" height="110px">  
     </header>
     <div class="container">
-        <form action="./controller/main.php" class="form-inline">
+        <form action="./controller/main.php" class="form-inline" method="POST">
             <div class="form-group">
-                <input type="email" class="form-control" name="login" id="login" placeholder="Mot de passe">
+                <input type="email" class="form-control" name="login" id="login" placeholder="login">
             </div>
             <div class="form-group">
              <input type="password" class="form-control" name="pass" id="pass" placeholder="Mot de passe">
